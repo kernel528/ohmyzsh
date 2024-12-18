@@ -76,5 +76,5 @@ ${git_info}\
 ${svn_info}\
 ${venv_info}\
  \
-[%*] $exit_code
+[%D{%Y-%m-%d} %*] $exit_code
 %{$terminfo[bold]$fg[red]%}: %{$reset_color%}"
