@@ -56,7 +56,7 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 # %{$terminfo[bold]$fg[red]%}: %{$reset_color%}"
 
 # Compressed
-PROMPT="${PROMPT_HOST_PREFIX} 
+PROMPT="
 %(#,%{$fg[red]%}%n @ %m %{$fg[yellow]%}%~${git_info}
 %{$terminfo[bold]$fg[yellow]%}: %{$reset_color%},\
 %{$reset_color%}$fg[blue]${time_stamp} $fg[yellow]%}%~%{$reset_color%} ${git_info} ${venv_info} ${exit_code}
