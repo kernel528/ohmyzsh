@@ -41,23 +41,9 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 # % ys @ ys-mbp in ~/.oh-my-zsh on git:master x [21:47:42] C:0
 # $
 
-# Old
-# PROMPT="
-# %{$terminfo[bold]$fg[red]%}%{$reset_color%} \
-# %(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
-# %{$reset_color%}@ \
-# %{$fg[green]%}%m \
-# %{$reset_color%}\
-# %{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%}\
-# ${git_info}\
-# ${venv_info}\
-#  \
-# [%D{%Y-%m-%d} %*] $exit_code
-# %{$terminfo[bold]$fg[red]%}: %{$reset_color%}"
-
 # Compressed
 PROMPT="
 %(#,%{$fg[red]%}%n @ %m %{$fg[yellow]%}%~${git_info}
 %{$terminfo[bold]$fg[yellow]%}: %{$reset_color%},\
-%{$reset_color%}$fg[blue]${time_stamp} %{$fg[green](%m%) $fg[yellow]%}%~%{$reset_color%} ${git_info} ${venv_info} ${exit_code}
+%{$reset_color%}$fg[blue]${time_stamp} %{$fg[green](%m% -ssh%) $fg[yellow]%}%~%{$reset_color%} ${git_info} ${venv_info} ${exit_code}
 %{$terminfo[bold]$fg[red]%}: %{$reset_color%}"
