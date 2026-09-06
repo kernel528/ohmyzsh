@@ -13,13 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'ohmyzsh/ohmyzsh'
     permissions:
-      contents: write # this is needed to push commits and branches
+      contents: read
     steps:
       - name: Harden the runner (Audit all outbound calls)
         uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
         with:
           egress-policy: audit
-
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -30,6 +29,11 @@ jobs:
         with:
           client-id: ${{ secrets.OHMYZSH_CLIENT_ID }}
           private-key: ${{ secrets.OHMYZSH_APP_PRIVATE_KEY }}
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          token: ${{ steps.generate-token.outputs.token }}
       - name: Setup Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
@@ -42,5 +46,5 @@ jobs:
           GIT_APP_EMAIL: 54982679+ohmyzsh[bot]@users.noreply.github.com
           TMP_DIR: ${{ runner.temp }}
         run: |
-          pip install -r .github/workflows/dependencies/requirements.txt
+          python3 -m pip install --require-hashes -r .github/workflows/dependencies/requirements.txt
           python3 .github/workflows/dependencies/updater.py

@@ -32,6 +32,7 @@ function josh_prompt {
     prompt=" $prompt"
   done
 
+  prompt="%{%F{green}%}$PWD$prompt%{%F{red}%}$(ruby_prompt_info)%{$reset_color%} ${branch//\%/%%}"
   prompt="%{%F{green}%}$PWD$prompt%{%F{red}%}$(ruby_prompt_info)%{$reset_color%} ${branch}"
 
   echo $prompt
